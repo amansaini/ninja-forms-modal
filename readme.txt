@@ -3,7 +3,7 @@ Contributors: aman086, webholics
 Tags: ninja forms, popup, modal, popup addon, newsletter, marketing, mailchimp, contact form, crm, activecampaign, salesforce, lightbox, window
 Requires at least: 4.4
 Tested up to: 4.8
-Stable tag: 3.0
+Stable tag: 3.0.1
 License: GPLv2 or later
 
 Popup/Modal addon for Ninja Forms.Create beutiful popups using Ninja Forms to newsletters, login, registration forms.
@@ -34,7 +34,7 @@ Popup can be triggered by click or can be opened on page load using the shortocd
 * Activate the plugin through the Plugins menu in WordPress
 * Create New Popup from NF Popup menu in admin sidebar
 * Select & save the Ninja Form you want to open in popup.
-* Use the shortcode to add it on page.
+* Use the shortcode to show it on page.
 
 
 **Checkout my other Ninja Forms Addons**
@@ -66,6 +66,9 @@ Add the shortocde to Page where you want to show popup.
 3. Popup Container Setting with Live Preview Designer
 
 == Changelog ==
+3.0.1 (9 Sep 2017)
+- Fixed Footer text in popup not showing up
+
 3.0
 Initial launch
 

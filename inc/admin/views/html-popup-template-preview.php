@@ -81,7 +81,7 @@ if ( $popup_id ) {
 	<div class=" nf-popup-<?php echo $popup_id ?> white-popup mfp-hide" id="preview-nf-popup">
 	<?php echo $content_before_form; ?>
 	    <?php echo do_shortcode( '[ninja_form id='.$ninja_form_id.']' ); ?>
-	<?php echo $content_before_form; ?>
+	<?php echo $content_after_form; ?>
 	</div>
 
 <?php } else{
