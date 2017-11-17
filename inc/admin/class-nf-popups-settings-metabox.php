@@ -47,6 +47,7 @@ class NF_Popups_Settings_Metabox {
 
 		if ( class_exists( 'Ninja_Forms' ) ) {
 			$forms = Ninja_Forms()->form()->get_forms();
+			$popup_triggers_type = apply_filters( 'nf_popups_trigger_types', array('click'=>'Click','auto_open'=>'Auto Open') );
 			// Add an nonce field so we can check for it later.
 			wp_nonce_field( 'nf_popups_inner_custom_box', 'nf_popups_inner_custom_box_nonce' );
 
@@ -106,8 +107,12 @@ class NF_Popups_Settings_Metabox {
 						</th>
 						<td>
 							<select id="nf-popups-settings-trigger" name='nf_popups_settings[trigger]'>
-							    <option <?php selected(  $this->get_setting( 'trigger' ),'click'  );?> value="click">Click</option>
-							    <option <?php selected(  $this->get_setting( 'trigger' ),'auto_open'  );?> value="auto_open">Auto Open</option>
+								<?php foreach ( $popup_triggers_type as $trigger_key => $trigger_label ) { ?>
+
+							    <option <?php selected(  $this->get_setting( 'trigger' ),$trigger_key  );?> value="<?php echo $trigger_key; ?>"><?php echo $trigger_label; ?></option>
+
+							   <?php } ?>
+
 							</select>
 						</td>
 					</tr>

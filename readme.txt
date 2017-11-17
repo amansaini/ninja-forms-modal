@@ -1,9 +1,9 @@
-=== Ninja Forms Popup===
+=== Popup addon for Ninja Forms ===
 Contributors: aman086, webholics
 Tags: ninja forms, popup, modal, popup addon, newsletter, marketing, mailchimp, contact form, crm, activecampaign, salesforce, lightbox, window
 Requires at least: 4.4
 Tested up to: 4.8
-Stable tag: 3.0.1
+Stable tag: 3.1
 License: GPLv2 or later
 
 Popup/Modal addon for Ninja Forms.Create beutiful popups using Ninja Forms to newsletters, login, registration forms.
@@ -14,6 +14,9 @@ Ninja Forms Popup allows you to show any Ninja Forms in Popup/Modal.
 You can create beautiful popups with live preview in customizer.
 It allows you add add content before & after the form in popup.
 Popup can be triggered by click or can be opened on page load using the shortocde.
+
+[Popup Demo](http://ninjapopup.org/)
+[Documentation](http://ninjapopup.org/)
 
 **Features:**
 * Option to set Overlay color
@@ -66,6 +69,9 @@ Add the shortocde to Page where you want to show popup.
 3. Popup Container Setting with Live Preview Designer
 
 == Changelog ==
+3.1 (12 Sep 2017)
+- Fixed Popup border not working in some cases.
+
 3.0.1 (9 Sep 2017)
 - Fixed Footer text in popup not showing up
 
