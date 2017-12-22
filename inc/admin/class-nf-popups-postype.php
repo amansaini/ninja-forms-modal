@@ -17,7 +17,7 @@ class NF_Popups_Posttype {
 			'new_item'           => __( 'New NF Popup', 'nf-popups' ),
 			'edit_item'          => __( 'Edit NF Popup', 'nf-popups' ),
 			'view_item'          => __( 'View NF Popup', 'nf-popups' ),
-			'all_items'          => __( 'All NF Popups', 'nf-popups' ),
+			'all_items'          => __( 'NF Popups', 'nf-popups' ),
 			'search_items'       => __( 'Search NF Popups', 'nf-popups' ),
 			'parent_item_colon'  => __( 'Parent NF Popups:', 'nf-popups' ),
 			'not_found'          => __( 'No popups found.', 'nf-popups' ),

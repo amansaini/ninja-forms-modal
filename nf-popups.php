@@ -20,6 +20,8 @@ require_once NF_POPUPS_DIR_URL.'/inc/admin/class-nf-popups-postype.php';
 require_once NF_POPUPS_DIR_URL.'/inc/admin/class-nf-popups-settings-metabox.php';
 require_once NF_POPUPS_DIR_URL.'/inc/admin/class-nf-popups-customizer.php';
 require_once NF_POPUPS_DIR_URL.'/inc/shortcode.php';
+
+require_once NF_POPUPS_DIR_URL.'/inc/admin/class-nf-popups-extensions.php';
    /**
      * Enqueue scripts
      *
@@ -38,6 +40,7 @@ function nf_popups_scripts(){
 add_action( 'wp_enqueue_scripts', 'nf_popups_scripts' );
 
 function nf_popups_admin_scripts(){
+    wp_enqueue_style( 'nf-popups-admin', NF_POPUPS_URL.'/css/nf-popups-admin.css' );
     wp_enqueue_script( 'nf-popups-admin', NF_POPUPS_URL.'/js/admin.js', array( 'jquery' ), false, false );
 }
 
