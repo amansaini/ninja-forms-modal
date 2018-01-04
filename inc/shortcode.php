@@ -45,10 +45,27 @@ class NF_Popups_Shortocde {
 		  width: auto;
 		  margin: 20px auto;
 	}
-	.mfp-bg.mfp-ready{
+
+	.mfp-ready.mfp-bg{
 		background-color: <?php echo NF_Popups_Customizer::get_value( $popup_id, 'overlay_color' ); ?>;
 		opacity:<?php echo NF_Popups_Customizer::get_value( $popup_id, 'overlay_opacity' ) == 0 ? 0 : NF_Popups_Customizer::get_value( $popup_id, 'overlay_opacity' )/100; ?>;
 	}
+	.mfp-wrap.mfp-removing .mfp-content {
+		opacity: 0;
+	}
+	/* .nf-animate .mfp-content {
+		opacity: 0;
+		transition: opacity .5s ease-out;
+	} */
+	.nf-animate {
+		animation-duration: 1s;
+	}
+	.nf-animate.mfp-ready .mfp-content {
+		opacity: 1;
+	}
+	/* .nf-animate.mfp-removing.mfp-bg {
+	opacity: 0;
+	}    */
 	body .nf-popup-<?php echo $popup_id; ?>{
 		width:         <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_width' ); ?>;
 		height:        <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_height' ); ?>;
@@ -64,6 +81,15 @@ class NF_Popups_Shortocde {
 		top:   <?php echo NF_Popups_Customizer::get_value( $popup_id, 'close_btn_top_margin' ); ?>;
 		right: <?php echo NF_Popups_Customizer::get_value( $popup_id, 'close_btn_right_margin' ); ?>;
 	}
+	//media query for mobile
+	@media only screen and (max-width : 736px){
+		body .nf-popup-<?php echo $popup_id ?>{
+			width: <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_width_mobile' ); ?>;
+			height: <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_height_mobile' ); ?>;
+		}
+	}
+
+
 	</style>
 	<script type="text/javascript">
 	(function($){
@@ -71,9 +97,23 @@ class NF_Popups_Shortocde {
 		$(function(){
 			$('<?php echo $trigger_id; ?>').magnificPopup({
 			  	 items: {
-				      src: '#nf-popup-<?php echo $popup_id ?>',
-				      type: 'inline'
-				  }
+					  src: '#nf-popup-<?php echo $popup_id ?>',
+					  type: 'inline'
+				  },
+				  removalDelay: 100,
+				  callbacks: {
+					beforeOpen: function() {
+						//this.st.mainClass += " <?php //echo NF_Popups_Customizer::get_value( $popup_id, 'open_animation' ); ?>";
+						this.wrap.addClass("nf-animate animated <?php echo NF_Popups_Customizer::get_value( $popup_id, 'open_animation' ); ?>");
+					},
+					// beforeClose: function() {
+					// 	this.content.addClass("animated <?php //echo NF_Popups_Customizer::get_value( $popup_id, 'close_animation' ); ?>");
+					// },
+					// close: function() {
+					// 	this.content.removeClass( "animated <?php //echo NF_Popups_Customizer::get_value( $popup_id, 'close_animation' ); ?>");
+					// }
+
+					}
 			});
 			<?php if ( $auto_open ) { ?>
 
@@ -87,7 +127,7 @@ class NF_Popups_Shortocde {
 	<a style="display:none" href="javscript:void(0)" id="<?php echo str_replace( "#", "", $trigger_id ); ?>">Click</a>
 	<div class=" nf-popup-<?php echo $popup_id ?> white-popup mfp-hide" id="nf-popup-<?php echo $popup_id ?>">
 	<?php echo $content_before_form; ?>
-	    <?php echo do_shortcode( '[ninja_form id=' . $ninja_form_id . ']' ); ?>
+		<?php echo do_shortcode( '[ninja_form id=' . $ninja_form_id . ']' ); ?>
 	<?php echo $content_after_form; ?>
 	</div>
 

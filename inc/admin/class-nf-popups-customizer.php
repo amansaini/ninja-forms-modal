@@ -25,8 +25,8 @@ if ( ! class_exists( 'NF_Popups_Customizer' ) ) :
 			if ( isset( $_GET[ $this->trigger ] ) ) {
 
 				update_option( 'nf_popup_id_customizer', $_REQUEST['popup_id' ] );
-
-				add_filter( 'customize_register', array( $this, 'remove_sections' ), 60 );
+              
+				add_filter( 'customize_register', array( $this, 'remove_sections' ), 600 );
 
 				if ( version_compare( $wp_version, '4.4', '>=' ) ) {
 					add_filter( 'customize_loaded_components', array( $this, 'remove_widget_panels' ), 60 );
@@ -61,8 +61,8 @@ if ( ! class_exists( 'NF_Popups_Customizer' ) ) :
 	}
 
 	public function enqueue_customizer_script() {
+        wp_enqueue_style( 'animate-css', NF_POPUPS_URL . '/css/animations.css' );
 		wp_enqueue_script( 'nf-popups-customizer-live-preview', NF_POPUPS_URL . '/js/customizer-preview.js', array( 'jquery', 'customize-preview' ) );
-
 		return true;
 	}
 
@@ -74,8 +74,6 @@ if ( ! class_exists( 'NF_Popups_Customizer' ) ) :
 	 */
 	public function customizer_settings( $wp_customize ) {
 		global $wp_customize;
-
-
 		include 'class-nf-popups-customizer-settings.php';
 
 		NF_Popups_Customizer_Settings::add_settings( );
@@ -84,13 +82,13 @@ if ( ! class_exists( 'NF_Popups_Customizer' ) ) :
 	}
 
 	/**
-	 * Show only our email settings in the preview
+	 * Show only our  settings in the preview
 	 *
 	 * @since 1.0.0
 	 */
 	public function control_filter( $active, $control ) {
 
-		if ( in_array( $control->section, array( 'nf_popups_container_settings', 'nf_popups_overlay_settings','nf_popups_close_btn_settings' ) ) ) {
+		if ( in_array( $control->section, array( 'nf_popups_container_settings', 'nf_popups_overlay_settings','nf_popups_animation_settings','nf_popups_close_btn_settings' ) ) ) {
 
 			return true;
 		}
@@ -139,10 +137,9 @@ if ( ! class_exists( 'NF_Popups_Customizer' ) ) :
 	 * @since 1.0.0
 	 */
 	public function remove_sections( $wp_customize ) {
-		global $wp_customize;
-
-		$wp_customize->remove_section( 'themes' );
-
+        global $wp_customize;  
+      //  var_dump($wp_customize->get_section('themes')); die;
+		$wp_customize->remove_section( 'themes' );  
 		return true;
 	}
 
@@ -170,7 +167,8 @@ if ( ! class_exists( 'NF_Popups_Customizer' ) ) :
 		$i = array_search( 'nav_menus', $components );
 		if ( false !== $i ) {
 			unset( $components[ $i ] );
-		}
+        }
+       
 		return $components;
 	}
 
@@ -236,7 +234,6 @@ if ( ! class_exists( 'NF_Popups_Customizer' ) ) :
 	 */
 	public function missing_notice() {
 		echo '<div class="error"><p>' . sprintf( __( 'Popup Addon for Ninja Forms requires Ninja Forms 3.0 or later to be installed and active. You can download %s here.', 'nf-popup' ), '<a href="http://www.ninjaforms.com" target="_blank">Ninja Forms</a>' ) . '</p></div>';
-
 		return true;
 	}
 
