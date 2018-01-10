@@ -74,7 +74,7 @@ Add the shortocde to Page where you want to show popup.
 3. Popup Container Setting with Live Preview Designer
 
 == Changelog ==
-3.2 (1 Jan 2018)
+3.2.1 (4 Jan 2018)
 (New)
 - Added animations for popup.
 - Added option to set width & height for mobile.

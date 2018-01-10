@@ -34,6 +34,7 @@ function nf_popups_scripts() {
     wp_enqueue_style( 'animate-css', NF_POPUPS_URL . '/css/animations.css' );
 	wp_enqueue_style( 'magnific-popup', NF_POPUPS_URL . '/css/magnific-popup.css' );
 	wp_enqueue_script( 'magnific-popup', NF_POPUPS_URL . '/js/magnific-popup.js', array( 'jquery' ), false, false );
+	wp_enqueue_script( 'nf-popups', NF_POPUPS_URL . '/js/nf-popups.js', array( 'jquery' ) );
 }
 add_action( 'wp_enqueue_scripts', 'nf_popups_scripts' );
 /**

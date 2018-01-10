@@ -5,12 +5,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class NF_Popups_Shortocde {
-
-	function __construct() {
+	public function __construct() {
 		add_shortcode( 'nf-popup', array( $this, 'nf_popup_shortcode' ) );
 	}
 
-	function nf_popup_shortcode( $atts ) {
+	public function nf_popup_shortcode( $atts ) {
 		if ( empty( $atts['id'] ) ) {
 			return;
 		}
@@ -21,20 +20,30 @@ class NF_Popups_Shortocde {
 		$content_before_form = isset( $nf_popups_settings['content_before_form'] )?$nf_popups_settings['content_before_form']: '';
 		$content_after_form  = isset( $nf_popups_settings['content_after_form'] )?$nf_popups_settings['content_after_form']:   '';
 		$delay               = isset( $nf_popups_settings['auto_open_delay'] )?$nf_popups_settings['auto_open_delay']:         '0';
+		$show_popup_times    = isset( $nf_popups_settings['show_popup_times'] )?$nf_popups_settings['show_popup_times']:'';
+		$cookie_expiry_length    = isset( $nf_popups_settings['cookie_expiry_length'] )?$nf_popups_settings['cookie_expiry_length']:'';
+		$cookie_expiry_type    = isset( $nf_popups_settings['cookie_expiry_type'] )?$nf_popups_settings['cookie_expiry_type']:'';
 		$auto_open           = false;
 		if ( $nf_popups_settings['trigger'] == 'auto_open' ) {
 			$auto_open = true;
 			$trigger_id =  '#preview-popup-link-' . $popup_id;
-
 		} elseif ( $nf_popups_settings['trigger'] == 'click' ) {
 			$trigger_id = $nf_popups_settings['trigger_id'];
 		}
 
 		$trigger_id = apply_filters( 'nf_popups_trigger_id', $trigger_id, $nf_popups_settings['trigger'], $popup_id );
 
+		if ( ! empty( $show_popup_times ) ) {
+			$cookie_settings = array(
+				'popup_id' =>$popup_id,
+				'times'     => $show_popup_times,
+				'expiry_length' => $cookie_expiry_length,
+				'expiry_type'   => $cookie_expiry_type
+			);
+		}
+
 		if ( ! empty( $ninja_form_id ) ) {
-			ob_start();
-?>
+			ob_start(); ?>
 
 	<style type="text/css">
 
@@ -92,34 +101,53 @@ class NF_Popups_Shortocde {
 
 	</style>
 	<script type="text/javascript">
-	(function($){
+	<?php if ( ! empty( $show_popup_times ) ) { ?>
+	var nf_popups_<?php echo $popup_id; ?>_cookie = <?php echo json_encode( $cookie_settings ); ?>;
+	<?php }else{ ?>
+	var nf_popups_<?php echo $popup_id; ?>_cookie= '';
+	<?php  } ?>
 
+	(function($){
 		$(function(){
+
+			NF_Popup_Cookies.check_popup_cookie_validity( nf_popups_<?php echo $popup_id; ?>_cookie );
+			var close_counter = NF_Popup_Cookies.get_cookie( 'nf_popups_close_counter_<?php echo $popup_id ?>');
+			var show_popup = true;
+			if( nf_popups_<?php echo $popup_id; ?>_cookie.times != undefined ){
+				var show_popup = parseInt(close_counter) < parseInt(nf_popups_<?php echo $popup_id; ?>_cookie.times);
+			}
+			if( show_popup ){
 			$('<?php echo $trigger_id; ?>').magnificPopup({
-			  	 items: {
-					  src: '#nf-popup-<?php echo $popup_id ?>',
-					  type: 'inline'
-				  },
-				  removalDelay: 100,
-				  callbacks: {
+			  	items: {
+					src: '#nf-popup-<?php echo $popup_id ?>',
+					type: 'inline'
+				},
+				removalDelay: 100,
+				callbacks: {
 					beforeOpen: function() {
-						//this.st.mainClass += " <?php //echo NF_Popups_Customizer::get_value( $popup_id, 'open_animation' ); ?>";
+						return false;
 						this.wrap.addClass("nf-animate animated <?php echo NF_Popups_Customizer::get_value( $popup_id, 'open_animation' ); ?>");
 					},
-					// beforeClose: function() {
-					// 	this.content.addClass("animated <?php //echo NF_Popups_Customizer::get_value( $popup_id, 'close_animation' ); ?>");
-					// },
-					// close: function() {
-					// 	this.content.removeClass( "animated <?php //echo NF_Popups_Customizer::get_value( $popup_id, 'close_animation' ); ?>");
-					// }
-
-					}
+					close: function() {
+						NF_Popup_Cookies.set_popup_cookie( nf_popups_<?php echo $popup_id; ?>_cookie );
+					},
+				},
+				disableOn: function() {
+					var close_counter = NF_Popup_Cookies.get_cookie( 'nf_popups_close_counter_<?php echo $popup_id ?>');
+					var show_popup = true;
+					if( nf_popups_<?php echo $popup_id; ?>_cookie.times != undefined ){
+						var show_popup = parseInt(close_counter) < parseInt(nf_popups_<?php echo $popup_id; ?>_cookie.times);
+					}				
+					return show_popup;
+				}
+				
 			});
 			<?php if ( $auto_open ) { ?>
 
 				setTimeout(function(){ $('<?php echo $trigger_id; ?>').trigger('click'); }, <?php echo $delay; ?>);
 
 			<?php } ?>
+			}
 
 	})
 		})(jQuery);
@@ -131,12 +159,12 @@ class NF_Popups_Shortocde {
 	<?php echo $content_after_form; ?>
 	</div>
 
-<?php }
+<?php
+		}
 		$content = ob_get_contents();
 		ob_clean();
 		return $content;
 	}
-
 }
 
 new NF_Popups_Shortocde();

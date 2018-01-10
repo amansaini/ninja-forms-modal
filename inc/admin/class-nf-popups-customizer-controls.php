@@ -156,11 +156,18 @@ class NF_Popups_Customizer_Controls {
 						'outset'  => __( 'Outset', 'nf-popup' ),
 						'ridge'   => __( 'Ridge', 'nf-popup' ),
 					),
-				) ) );
+                ) ) );
+                
+                if( ! defined('NF_POPUPS_ANIMATIONS_VERSION') ){
+                    $animate_description = 'Want more animations ? Try <a href="https://ninjapopup.org/extensions" target="_blank">animations addon';
+                }else{
+                    $animate_description = '';
+                }
 
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'nf_popups_open_animation_control', array(
 					'label'     => __( 'Display Animation', 'nf-popup' ),
-					'priority'  => 90,
+                    'priority'  => 90,
+                    'description' => $animate_description,
 					'section'   => 'nf_popups_animation_settings',
 					'settings'  => 'nf_popups[' . $popup_id . '][open_animation]',
 					'type'      => 'select',

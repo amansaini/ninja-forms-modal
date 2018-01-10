@@ -33,6 +33,14 @@ class NF_Popups_Extensions {
                 <div class="action-links">
 			        <a class="button" target="_blank" href="https://ninjapopup.org/extensions">Get Extension</a>
 			    </div>
+			 </li>
+			 <li class="nf-popups-extension">
+                 <h2 style="text-align:center">Advanced Animations</h2>
+                <img src="<?php echo NF_POPUPS_URL.'/images/advanced-animations.jpg' ?>">
+                <p> Open Popup using beautiful animations to get user attention.</p>
+                <div class="action-links">
+			        <a class="button" target="_blank" href="https://ninjapopup.org/extensions">Get Extension</a>
+			    </div>
              </li>
 
             </ul>

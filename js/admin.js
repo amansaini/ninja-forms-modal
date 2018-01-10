@@ -8,6 +8,7 @@
                 $('.nf-popups-metabox-trigger-class-row').hide()
                 $('.nf-popups-metabox-delay-row').show()
             }
-        })
+        });
+
     })
 })(jQuery);
