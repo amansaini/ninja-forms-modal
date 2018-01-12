@@ -90,7 +90,7 @@ class NF_Popups_Shortocde {
 		top:   <?php echo NF_Popups_Customizer::get_value( $popup_id, 'close_btn_top_margin' ); ?>;
 		right: <?php echo NF_Popups_Customizer::get_value( $popup_id, 'close_btn_right_margin' ); ?>;
 	}
-	//media query for mobile
+	/* media query for mobile */
 	@media only screen and (max-width : 736px){
 		body .nf-popup-<?php echo $popup_id ?>{
 			width: <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_width_mobile' ); ?>;
@@ -125,7 +125,6 @@ class NF_Popups_Shortocde {
 				removalDelay: 100,
 				callbacks: {
 					beforeOpen: function() {
-						return false;
 						this.wrap.addClass("nf-animate animated <?php echo NF_Popups_Customizer::get_value( $popup_id, 'open_animation' ); ?>");
 					},
 					close: function() {

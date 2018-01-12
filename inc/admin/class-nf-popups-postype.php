@@ -36,6 +36,7 @@ class NF_Popups_Posttype {
 			'rewrite'            => array( 'slug' => 'nf-popups' ),
 			'capability_type'    => 'post',
 			'has_archive'        => false,
+			'menu_icon'		 => 'dashicons-format-gallery',
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array( 'title', 'false' )

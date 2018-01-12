@@ -159,7 +159,7 @@ class NF_Popups_Customizer_Controls {
                 ) ) );
                 
                 if( ! defined('NF_POPUPS_ANIMATIONS_VERSION') ){
-                    $animate_description = 'Want more animations ? Try <a href="https://ninjapopup.org/extensions" target="_blank">animations addon';
+                    $animate_description = 'Want more animations ? Try <a href="https://ninjapopup.org/extensions" target="_blank">animations addon</a>';
                 }else{
                     $animate_description = '';
                 }
