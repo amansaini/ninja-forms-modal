@@ -34,6 +34,9 @@ Popup can be triggered by click or can be opened on page load using the shortocd
 * Option to set Popup Container Width
 * Option to set Popup Container Height
 
+**Premium Extensions:**
+[Advanced Animations](https://ninjapopup.org/downloads/advanced-animations/)
+[Exit Intent](https://ninjapopup.org/downloads/exit-intent-addon/)
 
 **How to use it?**
 
