@@ -3,7 +3,7 @@ Contributors: aman086, webholics
 Tags: ninja forms, popup, modal, popup addon, newsletter, marketing, mailchimp, contact form, crm, activecampaign, salesforce, lightbox, window
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 3.2.3
+Stable tag: 3.2.4
 License: GPLv2 or later
 
 Popup/Modal addon for Ninja Forms.Create beutiful popups using Ninja Forms to newsletters, login, registration forms.
@@ -19,20 +19,21 @@ Popup can be triggered by click or can be opened on page load using the shortocd
 [Documentation](http://ninjapopup.org/)
 
 **New Features:**
-* Option to set Popup Animations
-* Option to set Popup Container Width for mobile
-* Option to set Popup Container Height for mobile
+* Option to set Popup Cookie to hide it after opened certain number of times.
+* Option to set Popup Animations.
+* Option to set Popup Container Width for mobile.
+* Option to set Popup Container Height for mobile.
 
 **Features:**
-* Option to set Overlay color
-* Option to set Overlay opacity
-* Option to set Popup Container opacity
-* Option to set Popup Container background color
-* Option to set Popup Container Padding
-* Option to set Popup Container Border
-* Option to set Popup Container Rounded Corners
-* Option to set Popup Container Width
-* Option to set Popup Container Height
+* Option to set Overlay color.
+* Option to set Overlay opacity.
+* Option to set Popup Container opacity.
+* Option to set Popup Container background color.
+* Option to set Popup Container Padding.
+* Option to set Popup Container Border.
+* Option to set Popup Container Rounded Corners.
+* Option to set Popup Container Width.
+* Option to set Popup Container Height.
 
 **Premium Extensions:**
 [Advanced Animations](https://ninjapopup.org/downloads/advanced-animations/)
@@ -41,19 +42,12 @@ Popup can be triggered by click or can be opened on page load using the shortocd
 **How to use it?**
 
 * Download and unzip the plugin
-* Upload the entire ninja-forms-popup/ directory to the /wp-content/plugins/ directory
-* Activate the plugin through the Plugins menu in WordPress
-* Create New Popup from NF Popup menu in admin sidebar
+* Upload the entire ninja-forms-popup/ directory to the /wp-content/plugins/ directory.
+* Activate the plugin through the Plugins menu in WordPress.
+* Create New Popup from NF Popup menu in admin sidebar.
 * Select & save the Ninja Form you want to open in popup.
 * Use the shortcode to show it on page.
 
-
-**Checkout my other Ninja Forms Addons**
-* [reCAPTCHA for Ninja Forms](https://wordpress.org/plugins/ninja-forms-recaptcha-field/)
-* [Ninja Forms Paypal Standard](http://codecanyon.net/item/ninja-forms-paypal-standard-payment-gateway/10047955?ref=webholics)
-* [Ninja Forms GetResponse Addon](https://ninjaforms.com/extensions/getresponse)
-* [Ninja Forms iContact Addon](https://ninjaforms.com/extensions/icontact)
-* [Ninja Forms Sendy Addon](https://ninjaforms.com/extensions/sendy)
 
 == Installation ==
 To install Popups for Nf, follow these steps:
@@ -77,6 +71,11 @@ Add the shortocde to Page where you want to show popup.
 3. Popup Container Setting with Live Preview Designer
 
 == Changelog ==
+3.2.4 (8 March 2018)
+(Fix)
+- Added example tigger button code below shortcode in admin.
+- Optimized code.
+
 3.2.3 (12 Jan 2018)
 (New)
 - Added icon for NF Popup Menu in admin.
