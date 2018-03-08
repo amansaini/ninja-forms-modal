@@ -35,7 +35,7 @@ class NF_Popups_Customizer_Settings {
 		global $wp_customize;
 		$popup_id = get_option( 'nf_popup_id_customizer' );
 		foreach ( $settings as $setting ) {
-			if ( isset( $setting['postMessage'] ) && $setting['postMessage'] != false ) {
+			if (  ! isset( $setting['postMessage'] )  ) {
 				$wp_customize->add_setting( 'nf_popups[' . $popup_id . '][' . $setting['name'] . ']', array(
 						'type'      => 'option',
 						'transport' => 'postMessage',

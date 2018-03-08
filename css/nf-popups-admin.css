@@ -80,3 +80,14 @@
     border: 1px solid #1ea9ea;
     color: #fff;
 }
+
+.shortcode-step-2{
+	display: none;
+}
+.trigger-click{
+	display: block;
+}
+.trigger-code-heading{
+	margin: 22px 0px 11px 0px;
+    font-size: 15px;
+}

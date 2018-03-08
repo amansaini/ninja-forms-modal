@@ -64,6 +64,7 @@ if ( ! class_exists( 'NF_Popups_Customizer' ) ) :
         wp_enqueue_style( 'animate-css', NF_POPUPS_URL . '/css/animations.css' );
 		wp_enqueue_script( 'nf-popups-customizer-live-preview', NF_POPUPS_URL . '/js/customizer-preview.js', array( 'jquery', 'customize-preview' ) );
 		return true;
+
 	}
 
 	/**
@@ -140,6 +141,7 @@ if ( ! class_exists( 'NF_Popups_Customizer' ) ) :
         global $wp_customize;  
       //  var_dump($wp_customize->get_section('themes')); die;
 		$wp_customize->remove_section( 'themes' );  
+		$wp_customize->remove_panel( 'themes' );
 		return true;
 	}
 
