@@ -151,7 +151,10 @@ class NF_Popups_Shortocde {
 	})
 		})(jQuery);
 	</script>
-	<a style="display:none" href="javscript:void(0)" id="<?php echo str_replace( "#", "", $trigger_id ); ?>">Click</a>
+	<!-- Only create auto trigger if not set to click -->
+	<?php if( $nf_popups_settings['trigger'] != 'click'){ ?>
+		<a style="display:none" href="javscript:void(0)" id="<?php echo str_replace( "#", "", $trigger_id ); ?>">Click</a>
+	<?php } ?>
 	<div class=" nf-popup-<?php echo $popup_id ?> white-popup mfp-hide" id="nf-popup-<?php echo $popup_id ?>">
 	<?php echo $content_before_form; ?>
 		<?php echo do_shortcode( '[ninja_form id=' . $ninja_form_id . ']' ); ?>

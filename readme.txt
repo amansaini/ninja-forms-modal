@@ -71,6 +71,11 @@ Add the shortocde to Page where you want to show popup.
 3. Popup Container Setting with Live Preview Designer
 
 == Changelog ==
+3.2.5 (9 March 2018)
+(Fix)
+- Fixed ID not working incase trigger name is set using ID.
+
+
 3.2.4 (8 March 2018)
 (Fix)
 - Added example tigger button code below shortcode in admin.
