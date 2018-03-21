@@ -111,12 +111,7 @@ class NF_Popups_Shortocde {
 		$(function(){
 
 			NF_Popup_Cookies.check_popup_cookie_validity( nf_popups_<?php echo $popup_id; ?>_cookie );
-			var close_counter = NF_Popup_Cookies.get_cookie( 'nf_popups_close_counter_<?php echo $popup_id ?>');
-			var show_popup = true;
-			if( nf_popups_<?php echo $popup_id; ?>_cookie.times != undefined ){
-				var show_popup = parseInt(close_counter) < parseInt(nf_popups_<?php echo $popup_id; ?>_cookie.times);
-			}
-			if( show_popup ){
+				
 			$('<?php echo $trigger_id; ?>').magnificPopup({
 			  	items: {
 					src: '#nf-popup-<?php echo $popup_id ?>',
@@ -134,7 +129,7 @@ class NF_Popups_Shortocde {
 				disableOn: function() {
 					var close_counter = NF_Popup_Cookies.get_cookie( 'nf_popups_close_counter_<?php echo $popup_id ?>');
 					var show_popup = true;
-					if( nf_popups_<?php echo $popup_id; ?>_cookie.times != undefined ){
+					if( nf_popups_<?php echo $popup_id; ?>_cookie.times != undefined && close_counter != ''){
 						var show_popup = parseInt(close_counter) < parseInt(nf_popups_<?php echo $popup_id; ?>_cookie.times);
 					}				
 					return show_popup;
@@ -142,18 +137,15 @@ class NF_Popups_Shortocde {
 				
 			});
 			<?php if ( $auto_open ) { ?>
-
 				setTimeout(function(){ $('<?php echo $trigger_id; ?>').trigger('click'); }, <?php echo $delay; ?>);
-
 			<?php } ?>
-			}
 
 	})
 		})(jQuery);
 	</script>
 	<!-- Only create auto trigger if not set to click -->
 	<?php if( $nf_popups_settings['trigger'] != 'click'){ ?>
-		<a style="display:none" href="javscript:void(0)" id="<?php echo str_replace( "#", "", $trigger_id ); ?>">Click</a>
+		<a style="display:none"  href="javscript:void(0)" id="<?php echo str_replace( "#", "", $trigger_id ); ?>">Click</a>
 	<?php } ?>
 	<div class=" nf-popup-<?php echo $popup_id ?> white-popup mfp-hide" id="nf-popup-<?php echo $popup_id ?>">
 	<?php echo $content_before_form; ?>

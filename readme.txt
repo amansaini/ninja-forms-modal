@@ -3,7 +3,7 @@ Contributors: aman086, webholics
 Tags: ninja forms, popup, modal, popup addon, newsletter, marketing, mailchimp, contact form, crm, activecampaign, salesforce, lightbox, window
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 3.2.4
+Stable tag: 3.2.6
 License: GPLv2 or later
 
 Popup/Modal addon for Ninja Forms.Create beutiful popups using Ninja Forms to newsletters, login, registration forms.
@@ -34,7 +34,7 @@ Popup can be triggered by click or can be opened on page load using the shortocd
 * Option to set Popup Container Rounded Corners.
 * Option to set Popup Container Width.
 * Option to set Popup Container Height.
-
+* Option to open popup by any link using class or id.
 **Premium Extensions:**
 [Advanced Animations](https://ninjapopup.org/downloads/advanced-animations/)
 [Exit Intent](https://ninjapopup.org/downloads/exit-intent-addon/)
@@ -71,10 +71,14 @@ Add the shortocde to Page where you want to show popup.
 3. Popup Container Setting with Live Preview Designer
 
 == Changelog ==
+3.2.6 (21 March 2018)
+(Fix)
+- Fixed delay input box not showing if trigger is set to auto open.
+- Fixed a bug which prevented popup to open if Hide popup value  is set. 
+
 3.2.5 (9 March 2018)
 (Fix)
 - Fixed ID not working incase trigger name is set using ID.
-
 
 3.2.4 (8 March 2018)
 (Fix)

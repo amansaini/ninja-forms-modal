@@ -153,7 +153,7 @@ function settings_metabox( $post ) {
 							</select>
 						</td>
 					</tr>
-					<tr style="<?php echo $this->get_setting( 'trigger' ) == 'auto'? 'display:block':'display:none'; ?>" class="nf-popups-metabox-delay-row">
+					<tr style="<?php echo $this->get_setting( 'trigger' ) == 'auto_open'? 'display:table-row':'display:none'; ?>" class="nf-popups-metabox-delay-row">
 						<th scope="row">
 							<label>
 								 Open Delay
