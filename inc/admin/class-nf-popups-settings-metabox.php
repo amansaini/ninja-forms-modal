@@ -39,7 +39,7 @@ class NF_Popups_Settings_Metabox {
 						$trigger_attrs = 'id="'.ltrim($trigger_id,'#').'"';
 					}
 				}
-				
+
 			}
 
 ?>
@@ -50,7 +50,7 @@ class NF_Popups_Settings_Metabox {
 			<code class="popup-trigger-btn-code">
 			<?php echo htmlentities( '<button '.$trigger_attrs.' >Button Text</button>' ); ?>
 			</code>
-		
+
 			<p style="margin-top:10px" class="description">Add code like above to create a button which opens up popup on click</p>
 		</div>
 		<?php
@@ -115,7 +115,7 @@ function settings_metabox( $post ) {
 							</label>
 						</th>
 						<td>
-							<?php echo wp_editor( $this->get_setting( 'content_before_form' ), 'nf_popups_content_before_form', array( 'textarea_name'=>'nf_popups_settings[content_before_form]', 'textarea_rows'=>8 ) ); ?>
+							<?php echo wp_editor( $this->get_setting( 'content_before_form' ), 'nf_popups_content_before_form', array( 'media_buttons'=>true,'textarea_name'=>'nf_popups_settings[content_before_form]', 'textarea_rows'=>8 ) ); ?>
 						</td>
 					</tr>
 
@@ -151,6 +151,7 @@ function settings_metabox( $post ) {
 							   <?php } ?>
 
 							</select>
+							<p style="font-style: italic;" class="description"> Exit Intent <a target="_blank" href="https://ninjapopup.org/pricing/?utm_source=plugin-settings-page&utm_medium=popup-addon-for-ninja-forms&utm_campaign=popup-addon-for-ninja-form-settings-page">Available in PRO version</a> </p>
 						</td>
 					</tr>
 					<tr style="<?php echo $this->get_setting( 'trigger' ) == 'auto_open'? 'display:table-row':'display:none'; ?>" class="nf-popups-metabox-delay-row">
@@ -210,7 +211,18 @@ function settings_metabox( $post ) {
 						<p class="description"> Resets the hide popup counter after seleted duration </p>
 						</td>
 					</tr>
-
+					<tr class="">
+						<th scope="row">
+							<label>
+							Hide Popup on
+							</label>
+						</th>
+						<td>
+						<input type="checkbox" disabled  name=""  value="" class="small"  > Mobile
+						<input type="checkbox" disabled  name=""  value="" class="small"  > Desktop
+						<p style="font-style: italic;" class="description"> <a target="_blank" href="https://ninjapopup.org/pricing/?utm_source=plugin-settings-page&utm_medium=popup-addon-for-ninja-forms&utm_campaign=popup-addon-for-ninja-form-settings-page">Available in PRO version</a> </p>
+						</td>
+					</tr>
 
 				</tbody>
 			</table>

@@ -2,29 +2,25 @@
 Contributors: aman086, webholics
 Tags: ninja forms, popup, modal, popup addon, newsletter, marketing, mailchimp, contact form, crm, activecampaign, salesforce, lightbox, window
 Requires at least: 4.4
-Tested up to: 4.9
-Stable tag: 3.2.6
+Tested up to: 5.5
+Stable tag: 3.3
 License: GPLv2 or later
 
-Popup/Modal addon for Ninja Forms.Create beutiful popups using Ninja Forms to newsletters, login, registration forms.
+Popup/Modal addon for Ninja Forms. Create beautiful popups using Ninja Forms for newsletters, login, registration forms.
 
 == Description ==
 
-Ninja Forms Popup allows you to show any Ninja Forms in Popup/Modal.
+Popup Addon for Ninja Forms allows you to show any Ninja Forms in Popup/Modal.
 You can create beautiful popups with live preview in customizer.
-It allows you add add content before & after the form in popup.
+It allows you add additional content before &amp; after the form in popup.
 Popup can be triggered by click or can be opened on page load using the shortocde.
 
-[Popup Demo](http://ninjapopup.org/)
-[Documentation](http://ninjapopup.org/)
-
-**New Features:**
+[Popup Demo](https://ninjapopup.org/?utm_source=wordpress-plugin-repo&amp;utm_medium=popup-addon-for-ninja-forms&amp;utm_campaign=popup-addon-for-ninja-form-lite-version)
+==Top Features:==
 * Option to set Popup Cookie to hide it after opened certain number of times.
 * Option to set Popup Animations.
 * Option to set Popup Container Width for mobile.
 * Option to set Popup Container Height for mobile.
-
-**Features:**
 * Option to set Overlay color.
 * Option to set Overlay opacity.
 * Option to set Popup Container opacity.
@@ -34,23 +30,16 @@ Popup can be triggered by click or can be opened on page load using the shortocd
 * Option to set Popup Container Rounded Corners.
 * Option to set Popup Container Width.
 * Option to set Popup Container Height.
-* Option to open popup by any link using class or id.
-**Premium Extensions:**
-[Advanced Animations](https://ninjapopup.org/downloads/advanced-animations/)
-[Exit Intent](https://ninjapopup.org/downloads/exit-intent-addon/)
+* Option to open popup by any link using class or ID.
 
-**How to use it?**
-
-* Download and unzip the plugin
-* Upload the entire ninja-forms-popup/ directory to the /wp-content/plugins/ directory.
-* Activate the plugin through the Plugins menu in WordPress.
-* Create New Popup from NF Popup menu in admin sidebar.
-* Select & save the Ninja Form you want to open in popup.
-* Use the shortcode to show it on page.
-
+Get more features in [Pro version](https://ninjapopup.org/pricing/?utm_source=wordpress-plugin-repo&amp;utm_medium=popup-addon-for-ninja-forms&amp;utm_campaign=popup-addon-for-ninja-form-lite-version)
+* Advanced Animations
+* Exit Intent
+* Hide Popup on Mobile/Desktop.
+[Get Popup Addon for Ninja Forms PRO!](https://ninjapopup.org/pricing/?utm_source=wordpress-plugin-repo&amp;utm_medium=popup-addon-for-ninja-forms&amp;utm_campaign=popup-addon-for-ninja-form-lite-version)
 
 == Installation ==
-To install Popups for Nf, follow these steps:
+To install Popups for Ninja Forms, follow these steps:
 
 * Download and unzip the plugin
 * Upload the entire ninja-forms-popup/ directory to the /wp-content/plugins/ directory
@@ -61,7 +50,7 @@ To install Popups for Nf, follow these steps:
 = How to use it? =
 
 Install it and edit/create a new NF Popup. Select the Ninja Form which you would like to show inside popup.
-Save the settings & then design the popup.
+Save the settings &amp; then design the popup.
 Add the shortocde to Page where you want to show popup.
 
 == Screenshots ==
@@ -71,10 +60,14 @@ Add the shortocde to Page where you want to show popup.
 3. Popup Container Setting with Live Preview Designer
 
 == Changelog ==
+3.3 (3rd Sep 2020)
+(Fix)
+- Compatibility with WordPress 5.5
+
 3.2.6 (21 March 2018)
 (Fix)
 - Fixed delay input box not showing if trigger is set to auto open.
-- Fixed a bug which prevented popup to open if Hide popup value  is set. 
+- Fixed a bug which prevented popup to open if Hide popup value  is set.
 
 3.2.5 (9 March 2018)
 (Fix)
@@ -99,7 +92,7 @@ Add the shortocde to Page where you want to show popup.
 3.2.1 (4 Jan 2018)
 (New)
 - Added animations for popup.
-- Added option to set width & height for mobile.
+- Added option to set width &amp; height for mobile.
 
 3.2 (1 Jan 2018)
 - Added license page for addons.
@@ -130,5 +123,3 @@ Initial launch
 == Upgrade Notice ==
 3.0
 Initial launch
-
-
