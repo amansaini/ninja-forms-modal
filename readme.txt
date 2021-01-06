@@ -2,8 +2,8 @@
 Contributors: aman086, webholics
 Tags: ninja forms, popup, modal, popup addon, newsletter, marketing, mailchimp, contact form, crm, activecampaign, salesforce, lightbox, window
 Requires at least: 4.4
-Tested up to: 5.5
-Stable tag: 3.3
+Tested up to: 5.6
+Stable tag: 3.4
 License: GPLv2 or later
 
 Popup/Modal addon for Ninja Forms. Create beautiful popups using Ninja Forms for newsletters, login, registration forms.
@@ -15,7 +15,7 @@ You can create beautiful popups with live preview in customizer.
 It allows you add additional content before &amp; after the form in popup.
 Popup can be triggered by click or can be opened on page load using the shortocde.
 
-[Popup Demo](https://ninjapopup.org/?utm_source=wordpress-plugin-repo&amp;utm_medium=popup-addon-for-ninja-forms&amp;utm_campaign=popup-addon-for-ninja-form-lite-version)
+[Popup Demo](https://nfpopup.com/?utm_source=wordpress-plugin-repo&amp;utm_medium=popup-addon-for-ninja-forms&amp;utm_campaign=popup-addon-for-ninja-form-lite-version)
 ==Top Features:==
 * Option to set Popup Cookie to hide it after opened certain number of times.
 * Option to set Popup Animations.
@@ -32,11 +32,11 @@ Popup can be triggered by click or can be opened on page load using the shortocd
 * Option to set Popup Container Height.
 * Option to open popup by any link using class or ID.
 
-Get more features in [Pro version](https://ninjapopup.org/pricing/?utm_source=wordpress-plugin-repo&amp;utm_medium=popup-addon-for-ninja-forms&amp;utm_campaign=popup-addon-for-ninja-form-lite-version)
+Get more features in [Pro version](https://nfpopup.com/pricing/?utm_source=wordpress-plugin-repo&amp;utm_medium=popup-addon-for-ninja-forms&amp;utm_campaign=popup-addon-for-ninja-form-lite-version)
 * Advanced Animations
 * Exit Intent
 * Hide Popup on Mobile/Desktop.
-[Get Popup Addon for Ninja Forms PRO!](https://ninjapopup.org/pricing/?utm_source=wordpress-plugin-repo&amp;utm_medium=popup-addon-for-ninja-forms&amp;utm_campaign=popup-addon-for-ninja-form-lite-version)
+[Get Popup Addon for Ninja Forms PRO!](https://nfpopup.com/pricing/?utm_source=wordpress-plugin-repo&amp;utm_medium=popup-addon-for-ninja-forms&amp;utm_campaign=popup-addon-for-ninja-form-lite-version)
 
 == Installation ==
 To install Popups for Ninja Forms, follow these steps:
@@ -60,6 +60,10 @@ Add the shortocde to Page where you want to show popup.
 3. Popup Container Setting with Live Preview Designer
 
 == Changelog ==
+3.4 (3rd Jan 2021)
+(Fix)
+- Compatibility with WordPress 5.6
+
 3.3 (3rd Sep 2020)
 (Fix)
 - Compatibility with WordPress 5.5

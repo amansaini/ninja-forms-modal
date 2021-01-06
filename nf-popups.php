@@ -4,9 +4,9 @@
 
 /*
  * Plugin Name: Popup Add-on for Ninja Forms
- * Plugin URI: https://ninjapopup.org
+ * Plugin URI: https://nfpopup.com
  * Description: Open Ninja Forms in beautiful Popups.
- * Version: 3.3
+ * Version: 3.4
  * Author: WebHolics
  * Text Domain: nf-popup
  *
@@ -16,7 +16,7 @@
 define( "NF_POPUPS_URL", plugins_url() . "/" . basename( dirname( __FILE__ ) ) );
 define( "NF_POPUPS_DIR_URL", WP_PLUGIN_DIR . "/" . basename( dirname( __FILE__ ) ) );
 
-define( 'NF_POPUPS_STORE_URL', 'https://ninjapopup.org/' );
+define( 'NF_POPUPS_STORE_URL', ' https://nfpopup.com' );
 
 require_once NF_POPUPS_DIR_URL . '/inc/admin/class-nf-popups-postype.php';
 require_once NF_POPUPS_DIR_URL . '/inc/admin/class-nf-popups-settings-metabox.php';

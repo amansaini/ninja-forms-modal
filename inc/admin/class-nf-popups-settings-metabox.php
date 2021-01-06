@@ -151,7 +151,7 @@ function settings_metabox( $post ) {
 							   <?php } ?>
 
 							</select>
-							<p style="font-style: italic;" class="description"> Exit Intent <a target="_blank" href="https://ninjapopup.org/pricing/?utm_source=plugin-settings-page&utm_medium=popup-addon-for-ninja-forms&utm_campaign=popup-addon-for-ninja-form-settings-page">Available in PRO version</a> </p>
+							<p style="font-style: italic;" class="description"> Exit Intent <a target="_blank" href=" https://nfpopup.com/pricing/?utm_source=plugin-settings-page&utm_medium=popup-addon-for-ninja-forms&utm_campaign=popup-addon-for-ninja-form-settings-page">Available in PRO version</a> </p>
 						</td>
 					</tr>
 					<tr style="<?php echo $this->get_setting( 'trigger' ) == 'auto_open'? 'display:table-row':'display:none'; ?>" class="nf-popups-metabox-delay-row">
@@ -220,7 +220,7 @@ function settings_metabox( $post ) {
 						<td>
 						<input type="checkbox" disabled  name=""  value="" class="small"  > Mobile
 						<input type="checkbox" disabled  name=""  value="" class="small"  > Desktop
-						<p style="font-style: italic;" class="description"> <a target="_blank" href="https://ninjapopup.org/pricing/?utm_source=plugin-settings-page&utm_medium=popup-addon-for-ninja-forms&utm_campaign=popup-addon-for-ninja-form-settings-page">Available in PRO version</a> </p>
+						<p style="font-style: italic;" class="description"> <a target="_blank" href=" https://nfpopup.com/pricing/?utm_source=plugin-settings-page&utm_medium=popup-addon-for-ninja-forms&utm_campaign=popup-addon-for-ninja-form-settings-page">Available in PRO version</a> </p>
 						</td>
 					</tr>
 

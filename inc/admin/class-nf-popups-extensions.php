@@ -31,7 +31,7 @@ class NF_Popups_Extensions {
 				<img src="<?php echo NF_POPUPS_URL . '/images/exit-intent.jpg' ?>">
 				<p> Convert abandoning visitors into subscribers and customers.Show users popup before they leave your site</p>
 				<div class="action-links">
-					<a class="button" target="_blank" href="https://ninjapopup.org/downloads/exit-intent-addon/">Get Extension</a>
+					<a class="button" target="_blank" href=" https://nfpopup.com/downloads/exit-intent-addon/">Get Extension</a>
 				</div>
 			 </li>
 			 <li class="nf-popups-extension">
@@ -39,7 +39,7 @@ class NF_Popups_Extensions {
 				<img src="<?php echo NF_POPUPS_URL . '/images/advanced-animations.jpg' ?>">
 				<p> Open Popup using beautiful animations to get user attention.</p>
 				<div class="action-links">
-					<a class="button" target="_blank" href="https://ninjapopup.org/downloads/advanced-animations/">Get Extension</a>
+					<a class="button" target="_blank" href=" https://nfpopup.com/downloads/advanced-animations/">Get Extension</a>
 				</div>
 			 </li>
 
