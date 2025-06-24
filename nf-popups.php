@@ -6,15 +6,15 @@
  * Plugin Name: Popup Add-on for Ninja Forms
  * Plugin URI: https://nfpopup.com
  * Description: Open Ninja Forms in beautiful Popups.
- * Version: 3.4
+ * Version: 3.5
  * Author: WebHolics
  * Text Domain: nf-popup
  *
- * Copyright 2018 WebHolics.
+ * Copyright 2021 WebHolics.
  */
 
-define( "NF_POPUPS_URL", plugins_url() . "/" . basename( dirname( __FILE__ ) ) );
-define( "NF_POPUPS_DIR_URL", WP_PLUGIN_DIR . "/" . basename( dirname( __FILE__ ) ) );
+define( 'NF_POPUPS_URL', plugins_url() . '/' . basename( dirname( __FILE__ ) ) );
+define( 'NF_POPUPS_DIR_URL', WP_PLUGIN_DIR . '/' . basename( dirname( __FILE__ ) ) );
 
 define( 'NF_POPUPS_STORE_URL', ' https://nfpopup.com' );
 
@@ -31,7 +31,7 @@ require_once NF_POPUPS_DIR_URL . '/inc/admin/class-nf-popups-licenses.php';
  * @return void
  */
 function nf_popups_scripts() {
-    wp_enqueue_style( 'animate-css', NF_POPUPS_URL . '/css/animations.css' );
+	wp_enqueue_style( 'animate-css', NF_POPUPS_URL . '/css/animations.css' );
 	wp_enqueue_style( 'magnific-popup', NF_POPUPS_URL . '/css/magnific-popup.css' );
 	wp_enqueue_script( 'magnific-popup', NF_POPUPS_URL . '/js/magnific-popup.js', array( 'jquery' ), false, false );
 	wp_enqueue_script( 'nf-popups', NF_POPUPS_URL . '/js/nf-popups.js', array( 'jquery' ) );

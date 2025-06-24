@@ -14,78 +14,84 @@ class NF_Popups_Settings_Metabox {
 	 * Register meta box(es).
 	 */
 	function register_meta_boxes() {
-		add_meta_box( 'nf-popups-shortcode-metabox', __( 'Popup Shortcode', 'nf-popup' ),  array( $this, 'shortcode_popup_metabox' ), 'nf-popups', 'side', 'high' );
-		add_meta_box( 'nf-popups-customize-metabox', __( 'Design Popup', 'nf-popup' ),  array( $this, 'design_popup_metabox' ), 'nf-popups', 'side', 'high' );
-		add_meta_box( 'nf-popups-settings-metabox', __( 'Popup Settings', 'nf-popup' ),  array( $this, 'settings_metabox' ), 'nf-popups', 'normal', 'high' );
+		add_meta_box( 'nf-popups-shortcode-metabox', __( 'Popup Shortcode', 'nf-popup' ), array( $this, 'shortcode_popup_metabox' ), 'nf-popups', 'side', 'high' );
+		add_meta_box( 'nf-popups-customize-metabox', __( 'Design Popup', 'nf-popup' ), array( $this, 'design_popup_metabox' ), 'nf-popups', 'side', 'high' );
+		add_meta_box( 'nf-popups-settings-metabox', __( 'Popup Settings', 'nf-popup' ), array( $this, 'settings_metabox' ), 'nf-popups', 'normal', 'high' );
 	}
 
 	function shortcode_popup_metabox( $post ) {
 		// set the settings variable
 		$this->settings = get_post_meta( $post->ID, 'nf_popups_settings', true );
-?>
+		?>
 		<h3>Step 1:</h3>
 		<code>[nf-popup id=<?php echo get_the_ID(); ?>]</code>
 		<p style="margin-top:10px" class="description">Use this shortcode to show popup anywhere on your site.</p>
 		<?php
-			$class ='';
-			$trigger_attrs='';
-			if ( $this->get_setting( 'trigger' ) == 'click' )  {
-				$class = 'trigger-click';
-				$trigger_id = $this->get_setting( 'trigger_id' );
-				if( !empty($trigger_id) ){
-					if( $trigger_id[0] =='.'){
-						$trigger_attrs = 'class="'.ltrim($trigger_id,'.').'"';
-					}else{
-						$trigger_attrs = 'id="'.ltrim($trigger_id,'#').'"';
-					}
+			$class         = '';
+			$trigger_attrs = '';
+		if ( $this->get_setting( 'trigger' ) == 'click' ) {
+			$class      = 'trigger-click';
+			$trigger_id = $this->get_setting( 'trigger_id' );
+			if ( ! empty( $trigger_id ) ) {
+				if ( $trigger_id[0] == '.' ) {
+					$trigger_attrs = 'class="' . ltrim( $trigger_id, '.' ) . '"';
+				} else {
+					$trigger_attrs = 'id="' . ltrim( $trigger_id, '#' ) . '"';
 				}
-
 			}
+		}
 
-?>
+		?>
 		<div class="shortcode-step-2 <?php echo $class; ?>">
 
 			<h3>Step 2:</h3>
 			<div class="trigger-code-heading">Example Trigger Code:</div>
 			<code class="popup-trigger-btn-code">
-			<?php echo htmlentities( '<button '.$trigger_attrs.' >Button Text</button>' ); ?>
+			<?php echo htmlentities( '<button ' . $trigger_attrs . ' >Button Text</button>' ); ?>
 			</code>
 
 			<p style="margin-top:10px" class="description">Add code like above to create a button which opens up popup on click</p>
 		</div>
 		<?php
-}
-
-/**
- * Meta box display callback.
- *
- * @param WP_Post $post Current post object.
- */
-function design_popup_metabox( $post ) {
-	// set the settings variable
-	$this->settings = get_post_meta( $post->ID, 'nf_popups_settings', true );
-	$form_id = $this->get_setting( 'ninja_form_id' );
-	if ( empty( $form_id ) ) {
-		// nor form selected
-		$this->customizer_url = '#';
-		$description = 'Please select & save the Ninja Forms first to customize the popup layout';
-	} else {
-		$this->_set_customizer_url( $post );
-		$description = '';
 	}
-?>
+
+	/**
+	 * Meta box display callback.
+	 *
+	 * @param WP_Post $post Current post object.
+	 */
+	function design_popup_metabox( $post ) {
+		// set the settings variable
+		$this->settings = get_post_meta( $post->ID, 'nf_popups_settings', true );
+		$form_id        = $this->get_setting( 'ninja_form_id' );
+		if ( empty( $form_id ) ) {
+			// nor form selected
+			$this->customizer_url = '#';
+			$description          = 'Please select & save the Ninja Forms first to customize the popup layout';
+		} else {
+			$this->_set_customizer_url( $post );
+			$description = '';
+		}
+		?>
 		<a id="nf-design-button" class="button" href="<?php echo $this->customizer_url; ?>">Customize Popup<a>
 		<p class="description" style="color:red"><?php echo $description; ?></p>
-	<?php }
+		<?php
+	}
 
-function settings_metabox( $post ) {
-	$form_id = $this->get_setting( 'ninja_form_id' );
-	if ( class_exists( 'Ninja_Forms' ) ) {
-		$forms = Ninja_Forms()->form()->get_forms();
-		$popup_triggers_type = apply_filters( 'nf_popups_trigger_types', array( 'click'=>'Click', 'auto_open'=>'Auto Open' ) );
-		// Add an nonce field so we can check for it later.
-		wp_nonce_field( 'nf_popups_inner_custom_box', 'nf_popups_inner_custom_box_nonce' );
-?>
+	function settings_metabox( $post ) {
+		$form_id = $this->get_setting( 'ninja_form_id' );
+		if ( class_exists( 'Ninja_Forms' ) ) {
+			$forms               = Ninja_Forms()->form()->get_forms();
+			$popup_triggers_type = apply_filters(
+				'nf_popups_trigger_types',
+				array(
+					'click'     => 'Click',
+					'auto_open' => 'Auto Open',
+				)
+			);
+			// Add an nonce field so we can check for it later.
+			wp_nonce_field( 'nf_popups_inner_custom_box', 'nf_popups_inner_custom_box_nonce' );
+			?>
 			<table class="form-table">
 				<tbody>
 					<tr class="nf-popups-metabox-row">
@@ -97,9 +103,9 @@ function settings_metabox( $post ) {
 						<td>
 							<select name='nf_popups_settings[ninja_form_id]'>
 								<option value="0">None</option>
-								<?php foreach ( $forms as $form ): ?>
+								<?php foreach ( $forms as $form ) : ?>
 									<?php $id = $form->get_id(); ?>
-										<option value="<?php echo $id; ?>" <?php selected( $id, $form_id );?>>
+										<option value="<?php echo $id; ?>" <?php selected( $id, $form_id ); ?>>
 											<?php echo $form->get_setting( 'title' ); ?>
 										</option>
 								<?php endforeach; ?>
@@ -115,7 +121,17 @@ function settings_metabox( $post ) {
 							</label>
 						</th>
 						<td>
-							<?php echo wp_editor( $this->get_setting( 'content_before_form' ), 'nf_popups_content_before_form', array( 'media_buttons'=>true,'textarea_name'=>'nf_popups_settings[content_before_form]', 'textarea_rows'=>8 ) ); ?>
+							<?php
+							echo wp_editor(
+								$this->get_setting( 'content_before_form' ),
+								'nf_popups_content_before_form',
+								array(
+									'media_buttons' => true,
+									'textarea_name' => 'nf_popups_settings[content_before_form]',
+									'textarea_rows' => 8,
+								)
+							);
+							?>
 						</td>
 					</tr>
 
@@ -126,7 +142,16 @@ function settings_metabox( $post ) {
 							</label>
 						</th>
 						<td>
-							<?php echo wp_editor( $this->get_setting( 'content_after_form' ), 'nf_popups_content_after_form', array( 'textarea_name'=>'nf_popups_settings[content_after_form]', 'textarea_rows'=>8 ) ); ?>
+							<?php
+							echo wp_editor(
+								$this->get_setting( 'content_after_form' ),
+								'nf_popups_content_after_form',
+								array(
+									'textarea_name' => 'nf_popups_settings[content_after_form]',
+									'textarea_rows' => 8,
+								)
+							);
+							?>
 						</td>
 					</tr>
 					<tr >
@@ -146,32 +171,32 @@ function settings_metabox( $post ) {
 							<select id="nf-popups-settings-trigger" name='nf_popups_settings[trigger]'>
 								<?php foreach ( $popup_triggers_type as $trigger_key => $trigger_label ) { ?>
 
-								<option <?php selected(  $this->get_setting( 'trigger' ), $trigger_key  );?> value="<?php echo $trigger_key; ?>"><?php echo $trigger_label; ?></option>
+								<option <?php selected( $this->get_setting( 'trigger' ), $trigger_key ); ?> value="<?php echo $trigger_key; ?>"><?php echo $trigger_label; ?></option>
 
-							   <?php } ?>
+								<?php } ?>
 
 							</select>
 							<p style="font-style: italic;" class="description"> Exit Intent <a target="_blank" href=" https://nfpopup.com/pricing/?utm_source=plugin-settings-page&utm_medium=popup-addon-for-ninja-forms&utm_campaign=popup-addon-for-ninja-form-settings-page">Available in PRO version</a> </p>
 						</td>
 					</tr>
-					<tr style="<?php echo $this->get_setting( 'trigger' ) == 'auto_open'? 'display:table-row':'display:none'; ?>" class="nf-popups-metabox-delay-row">
+					<tr style="<?php echo $this->get_setting( 'trigger' ) == 'auto_open' ? 'display:table-row' : 'display:none'; ?>" class="nf-popups-metabox-delay-row">
 						<th scope="row">
 							<label>
 								 Open Delay
 							</label>
 						</th>
 						<td>
-						<input type="text" value="<?php echo  $this->get_setting( 'auto_open_delay' ) ?>" class="small" name="nf_popups_settings[auto_open_delay]">ms
+						<input type="text" value="<?php echo esc_attr( $this->get_setting( 'auto_open_delay' ) ); ?>" class="small" name="nf_popups_settings[auto_open_delay]">ms
 						</td>
 					</tr>
-					<tr style="<?php echo $this->get_setting( 'trigger' ) == 'auto_open'? 'display:none':''; ?>" class="nf-popups-metabox-trigger-class-row">
+					<tr style="<?php echo $this->get_setting( 'trigger' ) == 'auto_open' ? 'display:none' : ''; ?>" class="nf-popups-metabox-trigger-class-row">
 						<th scope="row">
 							<label>
 								Trigger Class/ID
 							</label>
 						</th>
 						<td>
-						<input type="text" id="nf_popups_tigger_id" value="<?php echo  $this->get_setting( 'trigger_id' ) ?>" class="small" name="nf_popups_settings[trigger_id]" placeholder="e.g .mypopup or #mypopup">
+						<input type="text" id="nf_popups_tigger_id" value="<?php echo esc_attr( $this->get_setting( 'trigger_id' ) ); ?>" class="small" name="nf_popups_settings[trigger_id]" placeholder="e.g .mypopup or #mypopup">
 						<p class="description"> Give this class/id to your button/achor to open popup when clicked on them. Use classname with dot e.g .mypopup & id with # e.g #mypopup</p>
 						</td>
 					</tr>
@@ -189,7 +214,7 @@ function settings_metabox( $post ) {
 							</label>
 						</th>
 						<td>
-						<input type="text" style="width:50px" placeholder="e.g 1" value="<?php echo  $this->get_setting( 'show_popup_times' ) ?>" class="small" name="nf_popups_settings[show_popup_times]" > times
+						<input type="text" style="width:50px" placeholder="e.g 1" value="<?php echo esc_attr( $this->get_setting( 'show_popup_times' ) ); ?>" class="small" name="nf_popups_settings[show_popup_times]" > times
 						<p class="description"> Enter Integer value to hide popup after closed by users number of times. Leave it empty to show popup everytime user visit your site/page.</p>
 						</td>
 					</tr>
@@ -201,12 +226,12 @@ function settings_metabox( $post ) {
 							</label>
 						</th>
 						<td>
-						<input type="text" style="width:50px" placeholder="e.g 1" name="nf_popups_settings[cookie_expiry_length]" value="<?php echo  $this->get_setting( 'cookie_expiry_length' ) ?>" class="small"  >
+						<input type="text" style="width:50px" placeholder="e.g 1" name="nf_popups_settings[cookie_expiry_length]" value="<?php echo esc_attr( $this->get_setting( 'cookie_expiry_length' ) ); ?>" class="small"  >
 						<select id="nf-popups-cookie-expiry-type" name="nf_popups_settings[cookie_expiry_type]">
-							<option <?php selected(  $this->get_setting( 'cookie_expiry_type' ), 'D'  );?> value='D'>Days</option>
-							<option <?php selected(  $this->get_setting( 'cookie_expiry_type' ), 'W'  );?> value='W'>Weeks</option>
-							<option <?php selected(  $this->get_setting( 'cookie_expiry_type' ), 'M'  );?> value='M'>Months</option>
-							<option <?php selected(  $this->get_setting( 'cookie_expiry_type' ), 'Y'  );?> value='Y'>Years</option>
+							<option <?php selected( $this->get_setting( 'cookie_expiry_type' ), 'D' ); ?> value='D'>Days</option>
+							<option <?php selected( $this->get_setting( 'cookie_expiry_type' ), 'W' ); ?> value='W'>Weeks</option>
+							<option <?php selected( $this->get_setting( 'cookie_expiry_type' ), 'M' ); ?> value='M'>Months</option>
+							<option <?php selected( $this->get_setting( 'cookie_expiry_type' ), 'Y' ); ?> value='Y'>Years</option>
 						</select>
 						<p class="description"> Resets the hide popup counter after seleted duration </p>
 						</td>
@@ -227,93 +252,148 @@ function settings_metabox( $post ) {
 				</tbody>
 			</table>
 
-		<?php
-	} else {
-		echo 'Please install Ninja Forms 3.0 or later to use this plugin';
+			<?php
+		} else {
+			echo 'Please install Ninja Forms 3.0 or later to use this plugin';
 
+		}
 	}
-}
 
-/**
- * Save meta box content.
- *
- * @param int     $post_id Post ID
- */
-function save_meta_box( $post_id ) {
+	/**
+	 * Save meta box content.
+	 *
+	 * @param int $post_id Post ID
+	 */
+	function save_meta_box( $post_id ) {
 
-	/*
+		/*
 		 * We need to verify this came from the our screen and with proper authorization,
 		 * because save_post can be triggered at other times.
 		 */
 
-	// Check if our nonce is set.
-	if ( ! isset( $_POST['nf_popups_inner_custom_box_nonce'] ) ) {
-		return $post_id;
-	}
+		// Check if our nonce is set.
+		if ( ! isset( $_POST['nf_popups_inner_custom_box_nonce'] ) ) {
+			return $post_id;
+		}
 
-	$nonce = $_POST['nf_popups_inner_custom_box_nonce'];
+		$nonce = $_POST['nf_popups_inner_custom_box_nonce'];
 
-	// Verify that the nonce is valid.
-	if ( ! wp_verify_nonce( $nonce, 'nf_popups_inner_custom_box' ) ) {
-		return $post_id;
-	}
+		// Verify that the nonce is valid.
+		if ( ! wp_verify_nonce( $nonce, 'nf_popups_inner_custom_box' ) ) {
+			return $post_id;
+		}
 
-	/*
+		/*
 		 * If this is an autosave, our form has not been submitted,
 		 * so we don't want to do anything.
 		 */
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return $post_id;
-	}
-
-	// Check the user's permissions.
-	if ( 'page' == $_POST['post_type'] ) {
-		if ( ! current_user_can( 'edit_page', $post_id ) ) {
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return $post_id;
 		}
-	} else {
-		if ( ! current_user_can( 'edit_post', $post_id ) ) {
-			return $post_id;
+
+		// Check the user's permissions.
+		if ( 'page' == $_POST['post_type'] ) {
+			if ( ! current_user_can( 'edit_page', $post_id ) ) {
+				return $post_id;
+			}
+		} else {
+			if ( ! current_user_can( 'edit_post', $post_id ) ) {
+				return $post_id;
+			}
 		}
+
+		/* OK, it's safe for us to save the data now. */
+
+		// Sanitize the user input.
+		$nf_popups = array();
+		if ( isset( $_POST['nf_popups_settings'] ) && is_array( $_POST['nf_popups_settings'] ) ) {
+			foreach ( $_POST['nf_popups_settings'] as $key => $value ) {
+				// Sanitize based on the field type
+				switch ( $key ) {
+					case 'ninja_form_id':
+					case 'auto_open_delay':
+					case 'show_popup_times':
+					case 'cookie_expiry_length':
+						$nf_popups[ $key ] = intval( $value );
+						break;
+					case 'trigger':
+					case 'cookie_expiry_type':
+						$nf_popups[ $key ] = sanitize_text_field( $value );
+						break;
+					case 'trigger_id':
+						// Allow only alphanumeric characters, dots, hashes, dashes, and underscores for CSS selectors
+						$nf_popups[ $key ] = preg_replace( '/[^a-zA-Z0-9\.\#\-_]/', '', $value );
+						break;
+					case 'content_before_form':
+					case 'content_after_form':
+						$nf_popups[ $key ] = wp_kses_post( $value );
+						break;
+					default:
+						$nf_popups[ $key ] = sanitize_text_field( $value );
+						break;
+				}
+			}
+		}
+
+		// Update the meta field.
+		update_post_meta( $post_id, 'nf_popups_settings', $nf_popups );
 	}
 
-	/* OK, it's safe for us to save the data now. */
+	/**
+	 * Set the customizer url
+	 *
+	 * @since 1.0.0
+	 */
+	private function _set_customizer_url( $post ) {
 
-	// Sanitize the user input.
-	$nf_popups = $_POST['nf_popups_settings'];
+		$post_id = $post->ID;
 
-	// Update the meta field.
-	update_post_meta( $post_id, 'nf_popups_settings', $nf_popups );
-}
+		$url = admin_url( 'customize.php' );
 
-/**
- * Set the customizer url
- *
- * @since 1.0.0
- */
-private function _set_customizer_url( $post ) {
+		$url = add_query_arg( 'nf-popups-customizer', 'true', $url );
 
-	$post_id = $post->ID;
+		$url = add_query_arg( 'popup_id', $post_id, $url );
 
-	$url = admin_url( 'customize.php' );
+		$url = add_query_arg(
+			'url',
+			wp_nonce_url(
+				urlencode(
+					add_query_arg(
+						array(
+							'popup_id'             => $post_id,
+							'nf-popups-customizer' => 'true',
+						),
+						site_url()
+					)
+				),
+				'preview-popup'
+			),
+			$url
+		);
 
-	$url = add_query_arg( 'nf-popups-customizer', 'true', $url );
+		$url = add_query_arg(
+			'return',
+			urlencode(
+				add_query_arg(
+					array(
+						'post'   => $post_id,
+						'action' => 'edit',
+					),
+					admin_url( 'post.php' )
+				)
+			),
+			$url
+		);
 
-	$url = add_query_arg( 'popup_id', $post_id, $url );
+		$this->customizer_url = esc_url_raw( $url );
 
-	$url = add_query_arg( 'url', wp_nonce_url(  urlencode( add_query_arg( array( 'popup_id' => $post_id, 'nf-popups-customizer' => 'true' ), site_url() ) ), 'preview-popup' ), $url );
+		return true;
+	}
 
-	$url = add_query_arg( 'return', urlencode( add_query_arg( array( 'post' => $post_id, 'action' => 'edit' ), admin_url( 'post.php' ) ) ), $url );
-
-	$this->customizer_url = esc_url_raw( $url );
-
-	return true;
-}
-
-function get_setting( $setting_name ) {
-	$settings = $this->settings;
-	return isset( $settings[$setting_name] )?$settings[$setting_name]: '';
-}
+	function get_setting( $setting_name ) {
+		$settings = $this->settings;
+		return isset( $settings[ $setting_name ] ) ? $settings[ $setting_name ] : '';
+	}
 
 }
 
