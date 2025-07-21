@@ -13,20 +13,24 @@ class NF_Popups_Shortocde {
 		if ( empty( $atts['id'] ) ) {
 			return;
 		}
-		$trigger_id          = '';
-		$popup_id            = $atts['id'];
-		$nf_popups_settings  = get_post_meta( $popup_id, 'nf_popups_settings', true );
-		$ninja_form_id       = isset( $nf_popups_settings['ninja_form_id'] )?$nf_popups_settings['ninja_form_id']:             '';
-		$content_before_form = isset( $nf_popups_settings['content_before_form'] )?$nf_popups_settings['content_before_form']: '';
-		$content_after_form  = isset( $nf_popups_settings['content_after_form'] )?$nf_popups_settings['content_after_form']:   '';
-		$delay               = isset( $nf_popups_settings['auto_open_delay'] )?$nf_popups_settings['auto_open_delay']:         '0';
-		$show_popup_times    = isset( $nf_popups_settings['show_popup_times'] )?$nf_popups_settings['show_popup_times']:'';
-		$cookie_expiry_length    = isset( $nf_popups_settings['cookie_expiry_length'] )?$nf_popups_settings['cookie_expiry_length']:'';
-		$cookie_expiry_type    = isset( $nf_popups_settings['cookie_expiry_type'] )?$nf_popups_settings['cookie_expiry_type']:'';
-		$auto_open           = false;
+		$trigger_id         = '';
+		$popup_id           = $atts['id'];
+		$nf_popups_settings = get_post_meta( $popup_id, 'nf_popups_settings', true );
+		// if empty settings, return
+		if ( empty( $nf_popups_settings ) ) {
+			return;
+		}
+		$ninja_form_id        = isset( $nf_popups_settings['ninja_form_id'] ) ? $nf_popups_settings['ninja_form_id'] : '';
+		$content_before_form  = isset( $nf_popups_settings['content_before_form'] ) ? $nf_popups_settings['content_before_form'] : '';
+		$content_after_form   = isset( $nf_popups_settings['content_after_form'] ) ? $nf_popups_settings['content_after_form'] : '';
+		$delay                = isset( $nf_popups_settings['auto_open_delay'] ) ? $nf_popups_settings['auto_open_delay'] : '0';
+		$show_popup_times     = isset( $nf_popups_settings['show_popup_times'] ) ? $nf_popups_settings['show_popup_times'] : '';
+		$cookie_expiry_length = isset( $nf_popups_settings['cookie_expiry_length'] ) ? $nf_popups_settings['cookie_expiry_length'] : '';
+		$cookie_expiry_type   = isset( $nf_popups_settings['cookie_expiry_type'] ) ? $nf_popups_settings['cookie_expiry_type'] : '';
+		$auto_open            = false;
 		if ( $nf_popups_settings['trigger'] == 'auto_open' ) {
-			$auto_open = true;
-			$trigger_id =  '#preview-popup-link-' . $popup_id;
+			$auto_open  = true;
+			$trigger_id = '#preview-popup-link-' . $popup_id;
 		} elseif ( $nf_popups_settings['trigger'] == 'click' ) {
 			$trigger_id = $nf_popups_settings['trigger_id'];
 		}
@@ -35,10 +39,10 @@ class NF_Popups_Shortocde {
 
 		if ( ! empty( $show_popup_times ) ) {
 			$cookie_settings = array(
-				'popup_id' =>$popup_id,
-				'times'     => $show_popup_times,
+				'popup_id'      => $popup_id,
+				'times'         => $show_popup_times,
 				'expiry_length' => $cookie_expiry_length,
-				'expiry_type'   => $cookie_expiry_type
+				'expiry_type'   => $cookie_expiry_type,
 			);
 		}
 
@@ -57,7 +61,7 @@ class NF_Popups_Shortocde {
 
 	.mfp-ready.mfp-bg{
 		background-color: <?php echo NF_Popups_Customizer::get_value( $popup_id, 'overlay_color' ); ?>;
-		opacity:<?php echo NF_Popups_Customizer::get_value( $popup_id, 'overlay_opacity' ) == 0 ? 0 : NF_Popups_Customizer::get_value( $popup_id, 'overlay_opacity' )/100; ?>;
+		opacity:<?php echo NF_Popups_Customizer::get_value( $popup_id, 'overlay_opacity' ) == 0 ? 0 : NF_Popups_Customizer::get_value( $popup_id, 'overlay_opacity' ) / 100; ?>;
 	}
 	.mfp-wrap.mfp-removing .mfp-content {
 		opacity: 0;
@@ -86,13 +90,13 @@ class NF_Popups_Shortocde {
 		border-color:  <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_border_color' ); ?>;
 		border-style:  <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_border_style' ); ?>;
 	}
-	body .nf-popup-<?php echo $popup_id ?> .mfp-close{
+	body .nf-popup-<?php echo $popup_id; ?> .mfp-close{
 		top:   <?php echo NF_Popups_Customizer::get_value( $popup_id, 'close_btn_top_margin' ); ?>;
 		right: <?php echo NF_Popups_Customizer::get_value( $popup_id, 'close_btn_right_margin' ); ?>;
 	}
 	/* media query for mobile */
 	@media only screen and (max-width : 736px){
-		body .nf-popup-<?php echo $popup_id ?>{
+		body .nf-popup-<?php echo $popup_id; ?>{
 			width: <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_width_mobile' ); ?>;
 			height: <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_height_mobile' ); ?>;
 		}
@@ -101,20 +105,20 @@ class NF_Popups_Shortocde {
 
 	</style>
 	<script type="text/javascript">
-	<?php if ( ! empty( $show_popup_times ) ) { ?>
+			<?php if ( ! empty( $show_popup_times ) ) { ?>
 	var nf_popups_<?php echo $popup_id; ?>_cookie = <?php echo json_encode( $cookie_settings ); ?>;
-	<?php }else{ ?>
+	<?php } else { ?>
 	var nf_popups_<?php echo $popup_id; ?>_cookie= '';
-	<?php  } ?>
+	<?php } ?>
 
 	(function($){
 		$(function(){
 
 			NF_Popup_Cookies.check_popup_cookie_validity( nf_popups_<?php echo $popup_id; ?>_cookie );
-				
+
 			$('<?php echo $trigger_id; ?>').magnificPopup({
-			  	items: {
-					src: '#nf-popup-<?php echo $popup_id ?>',
+				  items: {
+					src: '#nf-popup-<?php echo $popup_id; ?>',
 					type: 'inline'
 				},
 				removalDelay: 100,
@@ -127,14 +131,14 @@ class NF_Popups_Shortocde {
 					},
 				},
 				disableOn: function() {
-					var close_counter = NF_Popup_Cookies.get_cookie( 'nf_popups_close_counter_<?php echo $popup_id ?>');
+					var close_counter = NF_Popup_Cookies.get_cookie( 'nf_popups_close_counter_<?php echo $popup_id; ?>');
 					var show_popup = true;
 					if( nf_popups_<?php echo $popup_id; ?>_cookie.times != undefined && close_counter != ''){
 						var show_popup = parseInt(close_counter) < parseInt(nf_popups_<?php echo $popup_id; ?>_cookie.times);
-					}				
+					}
 					return show_popup;
 				}
-				
+
 			});
 			<?php if ( $auto_open ) { ?>
 				setTimeout(function(){ $('<?php echo $trigger_id; ?>').trigger('click'); }, <?php echo $delay; ?>);
@@ -144,16 +148,16 @@ class NF_Popups_Shortocde {
 		})(jQuery);
 	</script>
 	<!-- Only create auto trigger if not set to click -->
-	<?php if( $nf_popups_settings['trigger'] != 'click'){ ?>
-		<a style="display:none"  href="javscript:void(0)" id="<?php echo str_replace( "#", "", $trigger_id ); ?>">Click</a>
+			<?php if ( $nf_popups_settings['trigger'] != 'click' ) { ?>
+		<a style="display:none"  href="javscript:void(0)" id="<?php echo str_replace( '#', '', $trigger_id ); ?>">Click</a>
 	<?php } ?>
-	<div class=" nf-popup-<?php echo $popup_id ?> white-popup mfp-hide" id="nf-popup-<?php echo $popup_id ?>">
-	<?php echo $content_before_form; ?>
-		<?php echo do_shortcode( '[ninja_form id=' . $ninja_form_id . ']' ); ?>
-	<?php echo $content_after_form; ?>
+	<div class=" nf-popup-<?php echo $popup_id; ?> white-popup mfp-hide" id="nf-popup-<?php echo $popup_id; ?>">
+			<?php echo $content_before_form; ?>
+			<?php echo do_shortcode( '[ninja_form id=' . $ninja_form_id . ']' ); ?>
+			<?php echo $content_after_form; ?>
 	</div>
 
-<?php
+			<?php
 		}
 		$content = ob_get_contents();
 		ob_clean();

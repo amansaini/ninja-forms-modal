@@ -15,7 +15,7 @@ You can create beautiful popups with live preview in customizer.
 It allows you add additional content before &amp; after the form in popup.
 Popup can be triggered by click or can be opened on page load using the shortocde.
 
-[Popup Demo](https://nfpopup.com/?utm_source=wordpress-plugin-repo&amp;utm_medium=popup-addon-for-ninja-forms&amp;utm_campaign=popup-addon-for-ninja-form-lite-version)
+
 ==Top Features:==
 * Option to set Popup Cookie to hide it after opened certain number of times.
 * Option to set Popup Animations.
@@ -32,11 +32,11 @@ Popup can be triggered by click or can be opened on page load using the shortocd
 * Option to set Popup Container Height.
 * Option to open popup by any link using class or ID.
 
-Get more features in [Pro version](https://nfpopup.com/pricing/?utm_source=wordpress-plugin-repo&amp;utm_medium=popup-addon-for-ninja-forms&amp;utm_campaign=popup-addon-for-ninja-form-lite-version)
+Get more features in [Pro version](https://webholics.org/downloads/popup-add-on-for-ninja-forms-pro/?utm_source=wordpress-plugin-repo&amp;utm_medium=popup-addon-for-ninja-forms&amp;utm_campaign=popup-addon-for-ninja-form-lite-version)
 * Advanced Animations
 * Exit Intent
 * Hide Popup on Mobile/Desktop.
-[Get Popup Addon for Ninja Forms PRO!](https://nfpopup.com/pricing/?utm_source=wordpress-plugin-repo&amp;utm_medium=popup-addon-for-ninja-forms&amp;utm_campaign=popup-addon-for-ninja-form-lite-version)
+[Get Popup Addon for Ninja Forms PRO!](https://webholics.org/downloads/popup-add-on-for-ninja-forms-pro/?utm_source=wordpress-plugin-repo&amp;utm_medium=popup-addon-for-ninja-forms&amp;utm_campaign=popup-addon-for-ninja-form-lite-version)
 
 == Installation ==
 To install Popups for Ninja Forms, follow these steps:
@@ -60,6 +60,10 @@ Add the shortocde to Page where you want to show popup.
 3. Popup Container Setting with Live Preview Designer
 
 == Changelog ==
+
+3.5.1 (21 July 2025)
+- Fixed Fatal error on shortcode is popup is deleted.
+
 3.5 (24 June 2025)
 (Security Fix)
 - Fixed XSS (Cross-Site Scripting) vulnerability in admin settings

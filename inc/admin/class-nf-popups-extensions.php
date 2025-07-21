@@ -2,7 +2,7 @@
 
 class NF_Popups_Extensions {
 	function __construct() {
-		//add_action( 'admin_menu', array( $this, 'add_extensions_page' ) );
+		// add_action( 'admin_menu', array( $this, 'add_extensions_page' ) );
 	}
 
 	function add_extensions_page() {
@@ -18,8 +18,7 @@ class NF_Popups_Extensions {
 
 	function extensions_display() {
 
-
-?>
+		?>
 			<!-- Create a header in the default WordPress 'wrap' container -->
 			<div class="wrap">
 				<h1>Extensions</h1>
@@ -28,18 +27,18 @@ class NF_Popups_Extensions {
 			 <ul class="nf-popups-extension-row">
 			 <li class="nf-popups-extension">
 				 <h2 style="text-align:center">Exit Intent</h2>
-				<img src="<?php echo NF_POPUPS_URL . '/images/exit-intent.jpg' ?>">
+				<img src="<?php echo NF_POPUPS_URL . '/images/exit-intent.jpg'; ?>">
 				<p> Convert abandoning visitors into subscribers and customers.Show users popup before they leave your site</p>
 				<div class="action-links">
-					<a class="button" target="_blank" href=" https://nfpopup.com/downloads/exit-intent-addon/">Get Extension</a>
+					<a class="button" target="_blank" href=" https://webholics.org/downloads/popup-add-on-for-ninja-forms-pro/">Get Extension</a>
 				</div>
 			 </li>
 			 <li class="nf-popups-extension">
 				 <h2 style="text-align:center">Advanced Animations</h2>
-				<img src="<?php echo NF_POPUPS_URL . '/images/advanced-animations.jpg' ?>">
+				<img src="<?php echo NF_POPUPS_URL . '/images/advanced-animations.jpg'; ?>">
 				<p> Open Popup using beautiful animations to get user attention.</p>
 				<div class="action-links">
-					<a class="button" target="_blank" href=" https://nfpopup.com/downloads/advanced-animations/">Get Extension</a>
+					<a class="button" target="_blank" href="https://webholics.org/downloads/popup-add-on-for-ninja-forms-pro/">Get Extension</a>
 				</div>
 			 </li>
 
@@ -50,9 +49,8 @@ class NF_Popups_Extensions {
 			</div>
 		<?php
 
-
 	}
 
-}//class ends
+}//end class
 
 new NF_Popups_Extensions();

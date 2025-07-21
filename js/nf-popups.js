@@ -22,7 +22,7 @@ var NF_Popup_Cookies = {
 				this.set_cookie( 'nf_popups_counter_start_date_' + popup_id, this.get_current_date(), expiry_days );
 			}
 
-			//set main cookie 
+			//set main cookie
 			// var hide_popup_cookie = this.get_cookie( 'nf_popups_hide_' + popup_id );
 			// //only set cookie if it doesn't exists
 			// if( hide_popup_cookie ==' '){
@@ -103,7 +103,7 @@ var NF_Popup_Cookies = {
 		if ( diff > expiry_days ) {
 			// reset close counter after n days
 			this.set_cookie( 'nf_popups_close_counter_' + popup_id, 1, 500 );
-			// reset the popup shown date 
+			// reset the popup shown date
 			this.set_cookie( 'nf_popups_counter_start_date_' + popup_id, '', 500 );
 		}
 	},

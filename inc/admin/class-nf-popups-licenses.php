@@ -1,9 +1,9 @@
 <?php
-
 class NF_Popups_Licensing{
 
 	function __construct(){
 		add_action('admin_menu',array($this,'register_menu') );
+
 		add_action( 'admin_init', array( $this, 'setting_fields' ) );
 	}
 
@@ -32,10 +32,12 @@ class NF_Popups_Licensing{
 
 
 	function setting_fields(){
+
 		// If settings don't exist, create them.
 		if ( false == get_option( 'nf_popups_licenses' ) ) {
 			add_option( 'nf_popups_licenses' );
 		}
+
 
 		add_settings_section(
 			'nf_popups_licenses_section',
