@@ -6,7 +6,7 @@
  * Plugin Name: Popup Add-on for Ninja Forms
  * Plugin URI: https://webholics.org/downloads/popup-add-on-for-ninja-forms-pro/
  * Description: Open Ninja Forms in beautiful Popups.
- * Version: 3.5.1
+ * Version: 3.5.2
  * Author: WebHolics
  * Text Domain: nf-popup
  *

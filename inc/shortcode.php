@@ -60,8 +60,8 @@ class NF_Popups_Shortocde {
 	}
 
 	.mfp-ready.mfp-bg{
-		background-color: <?php echo NF_Popups_Customizer::get_value( $popup_id, 'overlay_color' ); ?>;
-		opacity:<?php echo NF_Popups_Customizer::get_value( $popup_id, 'overlay_opacity' ) == 0 ? 0 : NF_Popups_Customizer::get_value( $popup_id, 'overlay_opacity' ) / 100; ?>;
+		background-color: <?php echo esc_attr( NF_Popups_Customizer::get_value( $popup_id, 'overlay_color' ) ); ?>;
+		opacity:<?php echo esc_attr( NF_Popups_Customizer::get_value( $popup_id, 'overlay_opacity' ) == 0 ? 0 : NF_Popups_Customizer::get_value( $popup_id, 'overlay_opacity' ) / 100 ); ?>;
 	}
 	.mfp-wrap.mfp-removing .mfp-content {
 		opacity: 0;
@@ -80,25 +80,25 @@ class NF_Popups_Shortocde {
 	opacity: 0;
 	}    */
 	body .nf-popup-<?php echo $popup_id; ?>{
-		width:         <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_width' ); ?>;
-		height:        <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_height' ); ?>;
-		padding:       <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_padding' ); ?>px;
-		margin:        <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_margin' ); ?>;
-		background:    <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_background_color' ); ?>;
-		border-radius: <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_border_radius' ); ?>px;
-		border-width:  <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_border_thickness' ); ?>px;
-		border-color:  <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_border_color' ); ?>;
-		border-style:  <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_border_style' ); ?>;
+		width:         <?php echo esc_attr( NF_Popups_Customizer::get_value( $popup_id, 'container_width' ) ); ?>;
+		height:        <?php echo esc_attr( NF_Popups_Customizer::get_value( $popup_id, 'container_height' ) ); ?>;
+		padding:       <?php echo esc_attr( NF_Popups_Customizer::get_value( $popup_id, 'container_padding' ) ); ?>px;
+		margin:        <?php echo esc_attr( NF_Popups_Customizer::get_value( $popup_id, 'container_margin' ) ); ?>;
+		background:    <?php echo esc_attr( NF_Popups_Customizer::get_value( $popup_id, 'container_background_color' ) ); ?>;
+		border-radius: <?php echo esc_attr( NF_Popups_Customizer::get_value( $popup_id, 'container_border_radius' ) ); ?>px;
+		border-width:  <?php echo esc_attr( NF_Popups_Customizer::get_value( $popup_id, 'container_border_thickness' ) ); ?>px;
+		border-color:  <?php echo esc_attr( NF_Popups_Customizer::get_value( $popup_id, 'container_border_color' ) ); ?>;
+		border-style:  <?php echo esc_attr( NF_Popups_Customizer::get_value( $popup_id, 'container_border_style' ) ); ?>;
 	}
 	body .nf-popup-<?php echo $popup_id; ?> .mfp-close{
-		top:   <?php echo NF_Popups_Customizer::get_value( $popup_id, 'close_btn_top_margin' ); ?>;
-		right: <?php echo NF_Popups_Customizer::get_value( $popup_id, 'close_btn_right_margin' ); ?>;
+		top:   <?php echo esc_attr( NF_Popups_Customizer::get_value( $popup_id, 'close_btn_top_margin' ) ); ?>;
+		right: <?php echo esc_attr( NF_Popups_Customizer::get_value( $popup_id, 'close_btn_right_margin' ) ); ?>;
 	}
 	/* media query for mobile */
 	@media only screen and (max-width : 736px){
 		body .nf-popup-<?php echo $popup_id; ?>{
-			width: <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_width_mobile' ); ?>;
-			height: <?php echo NF_Popups_Customizer::get_value( $popup_id, 'container_height_mobile' ); ?>;
+			width: <?php echo esc_attr( NF_Popups_Customizer::get_value( $popup_id, 'container_width_mobile' ) ); ?>;
+			height: <?php echo esc_attr( NF_Popups_Customizer::get_value( $popup_id, 'container_height_mobile' ) ); ?>;
 		}
 	}
 
@@ -124,7 +124,7 @@ class NF_Popups_Shortocde {
 				removalDelay: 100,
 				callbacks: {
 					beforeOpen: function() {
-						this.wrap.addClass("nf-animate animated <?php echo NF_Popups_Customizer::get_value( $popup_id, 'open_animation' ); ?>");
+						this.wrap.addClass("nf-animate animated <?php echo esc_js( NF_Popups_Customizer::get_value( $popup_id, 'open_animation' ) ); ?>");
 					},
 					close: function() {
 						NF_Popup_Cookies.set_popup_cookie( nf_popups_<?php echo $popup_id; ?>_cookie );
